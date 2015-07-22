@@ -68,6 +68,10 @@ html {
      max-width: 64rem;
  }
 
+  .container.narrow {
+     max-width: 56rem;
+ }
+
 /* Medium screens (640px) */
  @media (min-width: 40rem) {
      html { font-size: 112%; }
@@ -85,6 +89,11 @@ html {
      .column.flow-opposite { float: right; }  
  }
 
+ /* Large screens (1024px) */
+ @media (min-width: 64rem) {
+     html { font-size: 120%; }
+ }
+
  .clearfix:before,
  .clearfix:after {
      content: " ";
@@ -93,9 +102,4 @@ html {
  
  .clearfix:after {
      clear: both;
- }
-
- /* Large screens (1024px) */
- @media (min-width: 64rem) {
-     html { font-size: 120%; }
  }
