@@ -1,7 +1,10 @@
-/*var pointsArray = document.getElementsByClassName('point');
-
-var forEach = function(pointsArray){
+var forEach = function(pointsArray, callback){
 	for(var i = 0; i < pointsArray.length; i++){
-		pointsArray[i];
+		callback(pointsArray[i]);
 	}
-}; */
+}; 
+
+// var numbers = [1,2,3]
+// forEach(numbers, function(number){
+//   console.log(number);
+// });
