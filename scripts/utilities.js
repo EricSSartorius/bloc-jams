@@ -3,8 +3,3 @@ var forEach = function(pointsArray, callback){
 		callback(pointsArray[i]);
 	}
 }; 
-
-// var numbers = [1,2,3]
-// forEach(numbers, function(number){
-//   console.log(number);
-// });
