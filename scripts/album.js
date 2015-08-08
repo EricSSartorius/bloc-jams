@@ -57,7 +57,7 @@
      
      var template =
         '<tr class="album-view-song-item">'
-      + '  <td class="song-item-number">' + songNumber + '</td>'
+      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
       + '  <td class="song-item-duration">' + songLength + '</td>'
       + '</tr>'
@@ -92,17 +92,44 @@
  
  };
  
+ // Elements we'll be adding listeners to
+ var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+ var songRows = document.getElementsByClassName('album-view-song-item');
+ // Album button templates
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
  window.onload = function() {
+
+
+
 
      setCurrentAlbum(albumPicasso);
 
-var myAlbums = [albumPicasso, albumMarconi, albumFruits];
-var index=0;
- document.getElementsByClassName("album-cover-art")[0].addEventListener("click", changeAlbum);
+
+     songListContainer.addEventListener('mouseover', function(event) {
+         //displays table data in console on mouseover
+         // Only target individual song rows during event delegation
+     if (event.target.parentElement.className === 'album-view-song-item') {
+         // Change the content from the number to the play button's HTML
+         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+     }
+     });
+
+
+     for (i = 0; i < songRows.length; i++) {
+         songRows[i].addEventListener('mouseleave', function(event) {
+             // Revert the content back to the number
+        // Selects first child element, which is the song-item-number element
+             this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+         });
+     }
+
+    var myAlbums = [albumPicasso, albumMarconi, albumFruits];
+    var index=0;
+    document.getElementsByClassName("album-cover-art")[0].addEventListener("click", changeAlbum);
 
     function changeAlbum() {
         index++;
-        if(index==myAlbums.length){ 
+        if(index === myAlbums.length){ 
            index=0;
        }
     setCurrentAlbum(myAlbums[index]);   
