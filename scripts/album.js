@@ -85,7 +85,6 @@
  
  };
 
-
    
 
 //Checks to see if a parent exists. If it doesn't, then show an alert that says "No parent found".
@@ -145,25 +144,20 @@ var getSongItem = function(element) {
          currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
          songItem.innerHTML = pauseButtonTemplate;
          currentlyPlayingSong = songItem.getAttribute('data-song-number');
-
-     }
+     } 
  };
-
-
  // Elements we'll be adding listeners to
-var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
-var songRows = document.getElementsByClassName('album-view-song-item');
+ var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+ var songRows = document.getElementsByClassName('album-view-song-item');
  // Album button templates
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
-
-// Store state of playing songs
-var currentlyPlayingSong = null;
-
-
-
-
+ // Store state of playing songs
+ var currentlyPlayingSong = null;
  window.onload = function() {
+
+
+
 
      setCurrentAlbum(albumPicasso);
 
@@ -179,19 +173,17 @@ var currentlyPlayingSong = null;
      songListContainer.addEventListener('mouseover', function(event) {
          //displays table data in console on mouseover
          // Only target individual song rows during event delegation
-
-     if (event.target.parentElement.className === 'album-view-song-item') {
-         // Change the content from the number to the play button's HTML
-         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
-         var songItem = getSongItem(event.target);
-         //only changes the innerHTML of the table cell when the element does not belong to the currently playing song
+        if (event.target.parentElement.className === 'album-view-song-item') {
+            // Change the content from the number to the play button's HTML
+            event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+            
+            var songItem = getSongItem(event.target);
             if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
                 songItem.innerHTML = playButtonTemplate;
             }
-
-     }
-
-
+         
+        }
+       
      });
 
 
@@ -199,9 +191,7 @@ var currentlyPlayingSong = null;
          songRows[i].addEventListener('mouseleave', function(event) {
              // Revert the content back to the number
         // Selects first child element, which is the song-item-number element
-
-            var leavingSongItem = getSongItem(event.target);
-
+              var leavingSongItem = getSongItem(event.target);
              var leavingSongItemNumber = leavingSongItem.getAttribute('data-song-number');
  
              // #2
@@ -209,12 +199,8 @@ var currentlyPlayingSong = null;
                  leavingSongItem.innerHTML = leavingSongItemNumber;
              }
          });
-
-
-            songRows[i].addEventListener('click', function(event) {
-             // Event handler call
-            clickHandler(event.target);
-
+         songRows[i].addEventListener('click', function(event) {
+             clickHandler(event.target);
          });
      }
 
@@ -230,13 +216,8 @@ var currentlyPlayingSong = null;
     setCurrentAlbum(myAlbums[index]);   
     }
 
-}
-
-
-
-
-
-};// close window.onload
+    
+};
 
 
 
