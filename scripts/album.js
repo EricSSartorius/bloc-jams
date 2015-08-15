@@ -18,7 +18,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         
 
         if (currentlyPlayingSongNumber !== null) {
-            var currentlyPlayingCell = parseInt($('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]'));
+            var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
             currentlyPlayingCell.html(currentlyPlayingSongNumber);
         }
         if (currentlyPlayingSongNumber !== songNumber) {
@@ -123,7 +123,7 @@ currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 };
 
 var getSongNumberCell = function(number){
-
+    return $('.song-item-number[data-song-number="' + number + '"]');
 };
 
  var nextSong = function() {
