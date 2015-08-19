@@ -24,7 +24,7 @@
     //Automatically animates points once the screen scrolls to their position
       $(window).scroll(function(event) {
 
-            if ($(window).scrollTop() <= 500) {
+            if ($(window).scrollTop() >= 400) {
              animatePoints();
          }
      });
