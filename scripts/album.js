@@ -117,8 +117,8 @@ var setCurrentTimeInPlayerBar = function(currentTime){
     var curTime = $(".current-time").html(filterTimeCode(currentTime));
 };
 
- var setTotalTimeInPlayerBar = function(totalTime){
-    var totTime = $(".total-time").html(filterTimeCode(totalTime));
+ var setTotalTimeInPlayerBar = function(){
+    var totTime = $(".total-time").html(currentSongFromAlbum.length);
  };
 
 var filterTimeCode = function(timeInSeconds){
@@ -220,7 +220,7 @@ var updatePlayerBarSong = function() {
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " + currentAlbum.artist);
     $('.left-controls .play-pause').html(playerBarPauseButton);
-    setTotalTimeInPlayerBar(currentSongDuration);
+    setTotalTimeInPlayerBar();
 };
 
 var togglePlayFromPlayerBar = function(){
