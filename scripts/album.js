@@ -1,12 +1,12 @@
 
 
-var createSongRow = function(songNumber, songName, songLength) {
+var createSongRow = function(songNumber, songName) {
      
        var template =
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
+      + '  <td class="song-item-duration"></td>'
       + '</tr>'
       ;
  
@@ -87,11 +87,12 @@ var setCurrentAlbum = function(album) {
      for (i = 0; i < album.songs.length; i++) {
         var sound = new buzz.sound(album.songs[i].audioUrl, {  formats: [ 'mp3' ],   preload: 'metadata'  });
          var mySound = function(i,sound){
+            var $newRow = createSongRow(i + 1, album.songs[i].name);
+            $albumSongList.append($newRow);
             return function(){
                 var length = sound.getDuration();
                 currentSongDurations.push(length);
-                var $newRow = createSongRow(i + 1, album.songs[i].name, length);
-                $albumSongList.append($newRow);
+                $newRow.find('.song-item-duration').text(filterTimeCode(length));
             }
         };
         sound.bind("loadedmetadata", mySound(i,sound));
