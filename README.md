@@ -2,6 +2,8 @@
 
 Bloc Jams is the first web app that I created for the front-end course at [Bloc.](http://www.bloc.io)
 This app was first made in JavaScript and then completely refactored into jQuery for learning purposes.
+Each commit is named after a checkpoint in the course that I followed, so the evolution from JS to jQuery can be seen.
+
 This version has since been refactored a third time in AngularJS and the repo for that can be found [here.](https://github.com/EricSSartorius/bloc-jams-angular)
 
 ###About
